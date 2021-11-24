@@ -18,4 +18,3 @@ personalMovieDB.movies[firstQuestionAboutMovie] = firstQuestionAboutRaiting;
 personalMovieDB.movies[secondQuestionAboutMovie] = secondQuestionAboutRaiting;
 
 console.log(personalMovieDB);
-
