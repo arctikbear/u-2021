@@ -1,66 +1,49 @@
-"use strict";
+/* Задания на урок:
 
-const personalMovieDB = {
-    count: 0,
-    movies: {},
-    actors: {},
-    genres: [],
-    private: false,
-    start: function() {
-        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?','');
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?','');
-        }
-    },
-    rememberMyFilms: function() {
-        let movieName,
-            raiting;
-        for (let i = 1; i <= 2; i++) {
-            do {
-                movieName = prompt('Один из последних просмотренных фильмов?', '');
-            } while (movieName == '' || movieName == null || movieName.length > 50);
-            do {
-                raiting = prompt('На сколько оцените его?', '');        
-            } while (raiting == '' || raiting == null || raiting > 10 || isNaN(raiting));
-            
-            personalMovieDB.movies[movieName] = raiting;
-        }    
-    },
-    detectPersonalLevel: function() {
-        if (personalMovieDB.count < 10) {
-            console.log('Просмотрено довольно мало фильмов');
-        } else if (personalMovieDB.count < 30) {
-            console.log('Вы классический зритель');
-        } else if (personalMovieDB.count >= 30) {
-            console.log('Вы киноман');
-        } else {
-            console.log('Произошла ошибка');
-        }    
-    },
-    showMyDB: function(hidden) {
-        if (!hidden) {
-            console.log(personalMovieDB);
-        }
-    },
-    writeYourGenres: function(dB) {
-        for (let i = 1; i <= 3; i++) {
-            let genre = prompt(`Ваш любимый жанр под номером ${i}?`).toLowerCase();
-            while (genre === '' || genre === null) {
-                genre = prompt(`Ваш любимый жанр под номером ${i}?`).toLowerCase();
-            }
-            personalMovieDB.genres[i-1] = genre;
-        }
-        personalMovieDB.genres.forEach((genre, key) => {
-            console.log(`Любимый жанр ${key+1} - это ${genre}`);
-        });
-    },
-    toggleVisibleMyDB : function() {
-        if (personalMovieDB.private) {
-            personalMovieDB.private = false;
-        } else {
-            personalMovieDB.private = true;
-        }
-    }
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
+'use strict';
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
 };
 
-personalMovieDB.writeYourGenres(personalMovieDB);
+const adv = document.querySelectorAll('.promo__adv img'),
+      poster = document.querySelector('.promo__bg'),
+      genre = poster.querySelector('.promo__genre'),
+      moviesList = document.querySelector('.promo__interactive-list'),
+      newMovies = movieDB.movies.sort();
+
+
+adv.forEach(img => {
+    img.remove();
+});
+
+genre.textContent = 'Драма';
+
+poster.style.backgroundImage = 'url("img/bg.jpg")';
+
+moviesList.innerHTML = '';
+
+newMovies.forEach( (movie, i) => {
+    moviesList.innerHTML +=
+    `<li class="promo__interactive-item">${i} ${movie}
+        <div class="delete"></div>
+    </li>`;
+});
