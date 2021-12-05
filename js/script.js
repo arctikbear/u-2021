@@ -1,35 +1,39 @@
-"use strict";
+'use strict';
 
-const btns = document.querySelectorAll('button'),
-      wrapper = document.querySelector('.btn-block');
+window.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tabheader__item'),
+          tabsContent = document.querySelectorAll('.tabcontent'),
+          tabsParent = document.querySelector('.tabheader__items');
+    
+    function hideTabContent() {
+        tabsContent.forEach(tabContent => {
+            tabContent.classList.add('hide');
+            tabContent.classList.remove('show', 'fade');
+        });
 
-// console.log(btns[0].classList.length);
-// console.log(btns[0].classList.item(0));
-// console.log(btns[0].classList.add('red'));
-// console.log(btns[0].classList.remove('blue'));
-// console.log(btns[0].classList.toggle('blue'));
-// console.log(btns[1].classList.toggle('red'));
-
-// if (btns[1].classList.contains('red')) {
-//     console.log('red');
-// }
-
-btns[0].addEventListener('click', () => {
-    if (!btns[1].classList.contains('red')) {
-        btns[1].classList.add('red');
-    } else {
-        btns[1].classList.remove('red');
+        tabs.forEach(tab => {
+            tab.classList.remove('tabheader__item_active');
+        });
     }
-});
 
-wrapper.addEventListener('click', (event) => {
-    // if (event.target && event.target.classList.contains('blue')) {
-    // if (event.target && event.target.tagName == "BUTTON") {
-    if (event.target && event.target.matches('button.red')) {
-        console.log('Hello');
+    function showTabContent(i = 0) {
+        tabsContent[i].classList.add('show', 'fade');
+        tabsContent[i].classList.remove('hide');
+        tabs[i].classList.add('tabheader__item_active');
     }
-});
+    hideTabContent();
+    showTabContent();
 
-const btn = document.createElement('button');
-btn.classList.add('red');
-wrapper.append(btn);
+    tabsParent.addEventListener('click', (event) => {
+        const target = event.target;
+
+        if (target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((tab, i) => {
+                if (target == tab) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+        }
+    });
+});
