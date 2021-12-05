@@ -1,86 +1,35 @@
-'use strict';
+"use strict";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const movieDB = {
-        movies: [
-            "Логан",
-            "Лига справедливости",
-            "Ла-ла лэнд",
-            "Одержимость",
-            "Скотт Пилигрим против..."
-        ]
-    };
-    
-    const adv = document.querySelectorAll('.promo__adv img'),
-          poster = document.querySelector('.promo__bg'),
-          genre = poster.querySelector('.promo__genre'),
-          movieList = document.querySelector('.promo__interactive-list'),
-          addForm = document.querySelector('form.add'),
-          addInput = addForm.querySelector('.adding__input'),
-          checkbox = addForm.querySelector('[type="checkbox"]'),
-          button = document.querySelector('button');
-        
-    const createMovieList = (movies, parent) => {
-        parent.innerHTML = '';
-        sortArr(movies);
-        
-        movies.forEach( (movie, i) => {
-            parent.innerHTML +=
-            `<li class="promo__interactive-item">${i + 1} ${movie}
-                <div class="delete"></div>
-            </li>`;
-        });
+const btns = document.querySelectorAll('button'),
+      wrapper = document.querySelector('.btn-block');
 
-        document.querySelectorAll('.delete').forEach((btn, i) => {
-            btn.addEventListener('click', () => {
-                btn.parentElement.remove();
-                movieDB.movies.splice(i, 1);
-                createMovieList(movies, parent);
-            });
-        });
-    };
+// console.log(btns[0].classList.length);
+// console.log(btns[0].classList.item(0));
+// console.log(btns[0].classList.add('red'));
+// console.log(btns[0].classList.remove('blue'));
+// console.log(btns[0].classList.toggle('blue'));
+// console.log(btns[1].classList.toggle('red'));
 
-    const deleteAdv = (arr) => {
-        arr.forEach(img => {
-            img.remove();
-        });
-    };
+// if (btns[1].classList.contains('red')) {
+//     console.log('red');
+// }
 
-    const makeChanges = () => {
-        genre.textContent = 'Драма';
-        poster.style.backgroundImage = 'url("img/bg.jpg")';
-    };
-
-    const sortArr = (arr) => {
-        arr.sort();
-    };
-
-    addForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        let newFilm = addInput.value;
-        const favourite = checkbox.checked;
-
-        if (newFilm) {
-            if (newFilm.length > 21) {
-                newFilm = newFilm.slice(0, 21) + '...';
-            }
-
-            if (favourite) {
-                console.log('movie is favourite');
-            }
-            movieDB.movies.push(newFilm);
-            sortArr(movieDB.movies);
-            createMovieList(movieDB.movies, movieList);            
-        }
-
-        // addForm.reset(); есть более продвинутая запись:
-        event.target.reset();
-    });
-
-    deleteAdv(adv);
-    sortArr(movieDB.movies);
-    makeChanges();
-    createMovieList(movieDB.movies, movieList);
-
+btns[0].addEventListener('click', () => {
+    if (!btns[1].classList.contains('red')) {
+        btns[1].classList.add('red');
+    } else {
+        btns[1].classList.remove('red');
+    }
 });
+
+wrapper.addEventListener('click', (event) => {
+    // if (event.target && event.target.classList.contains('blue')) {
+    // if (event.target && event.target.tagName == "BUTTON") {
+    if (event.target && event.target.matches('button.red')) {
+        console.log('Hello');
+    }
+});
+
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
