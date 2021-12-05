@@ -3,29 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Nx7yD44gXl8KmsyMRchP7TZr-FSW24LJGPFFwdvdIcZiODG6TG7WgVU7RCvMLJQCw4-FXdc0v29hMP2wE_5hWjbkhPSzHjWcJ5C6WM3yKyS-GRbB9XruccSXktCp7MWHe4rwZEyp6S-AiZrtGQVZpXkw3Ttp4yuDFiQUiMLg8vL75QNlQIPVHtwmVNYPynSba9Wer3XgqnYOz61A9ATMl4s2Wqkq7KNd1gSXbDdKaNRLGpwr5M8uD1NhQcTNSsjWcHVQEcFNcSDHQBwC8YkpaM6U5okHoqy_0CngwamgqNxoxAnJOT6K_LazUBzZoLlk0FtXri_17pEfs89ms6RRxY7c4f9e9fjgUEBG30UcSGkQ_gxdsgpY9HqL1EIPzxwh6Ml3n-2um9wLkcat5h-8dZzu0WGleLPtTvFLYVeBZ54RDE2ULGW4RHKhB3WnkX3cAMuh1_Flync6tfLG0FWUsSFKKDPnXNIrxvAfIbj0T6-ryAK1aJuPtkz4vNBZvfjgRpIvn7RMLyoKyRaVY83c3HpnQs7F8AYzzwYquSre9Evbg1pThzm9NEC9RNIK_a2_gt8KN7nAKS6Rict_3O91emfex0ki73B_jCp0AeTv5_jXvz5NWYYN88wU262YPPDLErrqHVlF3508PsktYdXHBBJC0dwlHkoOcOB1Hb5JkXN_To2nG3cPmw6jsurxPenXrrHrclah8_C9jbOP73c0ngTkQXGl--wZGq7fvzmIcSklrdONVxwPExr3-Qq81e4YY0nP-skJR7z4yOWgAfHeyg" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9hdHQtYy51ZGVteWNkbi5jb20vMjAyMC0wNS0xNl8xOS0yNC0yNS01NzRjOWY2NTZiMDAxOTdiMTJkMWZiZjFiNDQ5MmFmNC9vcmlnaW5hbC5odG1sP3Jlc3BvbnNlLWNvbnRlbnQtZGlzcG9zaXRpb249YXR0YWNobWVudCUzYiUyMGZpbGVuYW1lJTNkaW5kZXguaHRtbCZFeHBpcmVzPTE2Mzg3MDg1MzMmU2lnbmF0dXJlPWVFY3JwOUhCZ1Ric2RJVU5qdldURW5EcGNIMHdsazIwQ0Y3Q3hKeWRFeWJqOHl3YS1ZdzloZEpIbFV4b2lreXJ2ZnZhbWgtZkdLbC1DVUsyM21KMFRnLWtXcWozWlk3aXpHSTJRUXBlbGVxV2lFRVJ2TTRGUFQ2eGhyVXlmMk5tbGZieGh1Zi1LcUp5M2d5NXhhNXVCbXk1R0NvVVR6MnZaeFpZVmlvWWdBZWhIOGluZVBXR0tIOVpkTkZWSGFXMFI4WlRSaGY5aFRJS2hRdk8xNVpYZWh-dXJxWWwyNFczcTFMV0Nkc3RaanB3ZGl5SXdZN0FGaExScX5UcXRnaktPdFZpMzVrVlBOUXhDNExxMVNJSG9scEFFYmpTbVNKaEUydH5zcUpoeDVmUWZPV3ZNSWFBMFRsZmh2Tld4dEZzRlRpUHowT1JsNzBsRFdOQUdsQ01TZ19fJktleS1QYWlyLUlkPUFQS0FJVEpWNzdXUzVaVDcyNjJB"/></head>
+    <title>Movie DB</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
 <body>
-    
-    <div class="wrapper">
-        <div class="first">
-            <button></button>
-            <button id="current"></button>
-            <button></button>
+    <header class="header">
+        <div class="header__search">
+            <form action="#">
+                <input type="text" placeholder="Поиск">
+            </form>
         </div>
-        <div class="second">
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li data-current="3">3</li>
+        <div class="header__logo">
+            <img src="icons/Logotype.svg" alt="logo">
+        </div>
+    </header>
+    <main class="promo">
+        <div class="promo__menu">
+            <nav class="promo__menu-list">
+                <ul>
+                    <li><a class="promo__menu-item promo__menu-item_active" href="#">Фильмы</a></li>
+                    <li><a class="promo__menu-item" href="#">Сериалы</a></li>
+                    <li><a class="promo__menu-item" href="#">Мультфильмы</a></li>
+                    <li><a class="promo__menu-item" href="#">Клипы</a></li>
+                    <li><a class="promo__menu-item" href="#">Трейлеры</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="promo__content">
+            <div class="promo__bg">
+                <div class="promo__genre">КОМЕДИЯ</div>
+                <div class="promo__title">МАРСИАНИН</div>
+                <div class="promo__descr">ИСТОРИЯ ЧЕЛОВЕКА, ВЫЖИВШЕГО НА ЧУЖОЙ ПЛАНЕТЕ В ОДИНОЧКУ</div>
+                <div class="promo__ratings">
+                    <span>IMDb: 8.0</span>
+                    <span>Кинопоиск: 7.7</span>
+                </div>
+            </div>
+            <div class="promo__interactive">
+                <div>
+                    <div class="promo__interactive-title">ПРОСМОТРЕННЫЕ ФИЛЬМЫ</div>
+                    <ul class="promo__interactive-list">
+                        <li class="promo__interactive-item">ЛОГАН
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">ЛИГА СПРАВЕДЛИВОСТИ
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">ЛА-ЛА ЛЭНД
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">ОДЕРЖИМОСТЬ
+                            <div class="delete"></div>
+                        </li>
+                        <li class="promo__interactive-item">СКОТТ ПИЛИГРИМ ПРОТИВ...
+                            <div class="delete"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <form class="add">
+                        <div class="promo__interactive-title">ДОБАВИТЬ НОВЫЙ ФИЛЬМ</div>
+                        <span>Введите название фильма</span>
+                        <input class="adding__input" type="text" placeholder="Что уже посмотрено...?">
+                        <span>Сделать его любимым?</span>
+                        <input type="checkbox">
+                        <span class="yes">Да!</span>
+                        <button>Подтвердить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="promo__adv">
+            <div class="promo__adv-title">Реклама от спонсоров</div>
+            <img src="img/content_1.jpg" alt="some picture">
+            <img src="img/content_2.jpg" alt="some picture">
+            <img src="img/content_3.png" alt="some picture">
+        </div>
+    </main>
 
-                <li>4</li>
-                <li>5</li>
-            </ul>
-        </div>
-        <div class="third"></div>
-    </div>
-    <!-- renernh -->
     <script src="js/script.js"></script>
 </body>
 </html>
