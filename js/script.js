@@ -1,49 +1,20 @@
-/* Задания на урок:
+// console.log(document.head);
+// console.log(document.body.childNodes);
+// console.log(document.body.firstChild);
+// console.log(document.body.firstElementChild);
+// console.log(document.body.lastChild);
 
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
+// console.log(document.querySelector('#current').parentNode);
+// console.log(document.querySelector('#current').parentElement);
 
-2) Изменить жанр фильма, поменять "комедия" на "драма"
+// console.log(document.querySelector('#current').parentNode);
 
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-Реализовать только при помощи JS
+// console.log(document.querySelector('[data-current="3"]').nextSibling);
+console.log(document.querySelector('[data-current="3"]').nextElementSibling);
 
-4) Список фильмов на странице сформировать на основании данных из этого JS файла.
-Отсортировать их по алфавиту 
-
-5) Добавить нумерацию выведенных фильмов */
-
-'use strict';
-
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
-
-const adv = document.querySelectorAll('.promo__adv img'),
-      poster = document.querySelector('.promo__bg'),
-      genre = poster.querySelector('.promo__genre'),
-      moviesList = document.querySelector('.promo__interactive-list'),
-      newMovies = movieDB.movies.sort();
-
-
-adv.forEach(img => {
-    img.remove();
-});
-
-genre.textContent = 'Драма';
-
-poster.style.backgroundImage = 'url("img/bg.jpg")';
-
-moviesList.innerHTML = '';
-
-newMovies.forEach( (movie, i) => {
-    moviesList.innerHTML +=
-    `<li class="promo__interactive-item">${i} ${movie}
-        <div class="delete"></div>
-    </li>`;
-});
+for (let node of document.body.childNodes) {
+    if (node.nodeName == '#text') {
+        continue;
+    }
+    console.log(node);
+}
