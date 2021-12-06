@@ -1,47 +1,15 @@
-const btn = document.querySelector('.btn');
-let timerId,
-    i = 0;
+'use strict';
 
-// btn.addEventListener('click', () => {
-//     // const timerId = setTimeout(logger, 2000);
-//     timerId = setInterval(logger, 500);
-// });
+const now = new Date();
 
-// const timerId = setTimeout(function(text) {
-//     console.log(text);
-// }, 2000, 'Hello');
+console.log(now.getFullYear());
+console.log(now.getMonth());
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getHours());
+console.log(now.getUTCHours());
 
-// function logger() {
-//     if (i === 3) {
-//         clearInterval(timerId);
-//     }
-//     console.log('text');
-//     i++;
-// }
+console.log(now.getTimezoneOffset());
 
-// рекурсия для того, чтобы setTimeout ждал указанное время
-// после выполнения всех операций внутри
-
-// let id = setTimeout(function log(){
-//     console.log('Hello');
-//     id = setTimeout(log, 500);
-// }, 500);
-
-function myAnimation() {
-    const element = document.querySelector('.box');
-    let pos = 0;
-    
-    const id = setInterval(frame, 10);
-
-    function frame() {
-        if (pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            element.style.top = pos + "px";
-            element.style.left = pos + "px";
-        }
-    }
-}
-
-btn.addEventListener('click', myAnimation);
+console.log(now.getTime());
+console.log(Date(1638817756879));
