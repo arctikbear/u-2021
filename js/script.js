@@ -1,19 +1,125 @@
 'use strict';
 
-const box = document.querySelector('.box'),
-      btn = document.querySelector('button');
+window.addEventListener('DOMContentLoaded', () => {
+    // Tabs
+    const tabs = document.querySelectorAll('.tabheader__item'),
+          tabsContent = document.querySelectorAll('.tabcontent'),
+          tabsParent = document.querySelector('.tabheader__items');
+    
+    function hideTabContent() {
+        tabsContent.forEach(tabContent => {
+            tabContent.classList.add('hide');
+            tabContent.classList.remove('show', 'fade');
+        });
 
-const width = box.clientWidth;
-const heigth = box.clientHeight;
+        tabs.forEach(tab => {
+            tab.classList.remove('tabheader__item_active');
+        });
+    }
 
-const offsetWidth = box.offsetWidth;
-const offsetHeigth = box.offsetHeight;
+    function showTabContent(i = 0) {
+        tabsContent[i].classList.add('show', 'fade');
+        tabsContent[i].classList.remove('hide');
+        tabs[i].classList.add('tabheader__item_active');
+    }
+    hideTabContent();
+    showTabContent();
 
-btn.addEventListener('click', () => {
-    // box.style.height = box.scrollHeight + 'px';
-    console.log(box.scrollTop / box.scrollHeight * 100);
+    tabsParent.addEventListener('click', (event) => {
+        const target = event.target;
+
+        if (target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((tab, i) => {
+                if (target == tab) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+        }
+    });
+
+    // Timer
+
+    const deadLine = '2021-12-20';
+
+    function getTimeRemaining(endTime) {
+        const t = Date.parse(endTime) - Date.parse(new Date()),
+              days = Math.floor(t / (1000 * 60 * 60 * 24)),
+              hours = Math.floor( (t / (1000 * 60 * 60)) % 24),
+              minutes = Math.floor( (t / (1000 * 60)) % 60),
+              seconds = Math.floor( (t /1000) % 60);
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function getZero(num) {
+        if (num >= 0 && num < 10) {
+            return `0${num}`;
+        } else {
+            return num;
+        }
+    }
+
+    function setClock(selector, endTime) {
+        const timer = document.querySelector(selector),
+              days = timer.querySelector('#days'),
+              hours = timer.querySelector('#hours'),
+              minutes = timer.querySelector('#minutes'),
+              seconds = timer.querySelector('#seconds'),
+              timeInterval = setInterval(updateClock, 1000);
+
+        updateClock();
+
+        function updateClock() {
+            const t = getTimeRemaining(endTime);
+
+            days.innerHTML = getZero(t.days);
+            hours.innerHTML = getZero(t.hours);
+            minutes.innerHTML = getZero(t.minutes);
+            seconds.innerHTML = getZero(t.seconds);
+            if (t.total <= 0) {
+                clearInterval(timeInterval);
+            }
+        }
+    }
+    setClock('.timer', deadLine);
+    
+    // Modal
+    
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
+          modal = document.querySelector('.modal'),
+          modalCloseBtn = document.querySelector('[data-close]');
+    
+    modalTrigger.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // modal.classList.add('show');
+            // modal.classList.remove('hide');
+            modal.classList.toggle('show');
+            document.body.style.overflow = 'hidden';
+        });    
+    });
+
+    function closeModal() {
+        modal.classList.toggle('show');
+        document.body.style.overflow = '';
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
 });
-
-console.log(box.getBoundingClientRect());
-
-const style = window.getComputedStyle(box);
